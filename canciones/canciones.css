@@ -3,14 +3,17 @@ html {
     /* background-color: black; */
     font-size: 16px;
     box-sizing: border-box;
-    /* max-width: 1000px;
-    margin: 0 auto; */
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    /* overflow-x: hidden; */
 }
 
 header h1{
     text-align: center;
     color: #333;
-    padding: 2em 0;
+    padding: 2em 1em;
 }
 
 body {
@@ -30,6 +33,7 @@ nav {
     padding: 0 1em;
     box-sizing: border-box;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     background-color: #333;
@@ -39,7 +43,9 @@ nav a {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    
+    height: 2em;
+    align-content: center;
+    min-height: 60px;
 }
 nav a:hover{
     font-size: 1.3em;
@@ -49,9 +55,18 @@ nav a:hover{
 
 .header-octavas {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    gap: 1em;
+    /* de 769px de ancho a 772px de ancho posible bug. 
+    (no aplicaria el space between en este rango) */
+    /* gap: 1em; */
 }
+.header-octavas p {
+    text-align: center;
+    border-radius: 10px;
+    padding: 1em ;
+    transition: .3s;
+ }
 
 .content-notas {
     padding: .5em;
@@ -120,37 +135,36 @@ section {
 
 article {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     background-color: #e4e4e4;
     border-radius: 10px;
+    align-items: center;
 }
-/* article p{
-    border-right: solid 1px green;
-} */
-.header-octavas p {
+article p {
+    margin: .7em;
+    padding: .5em .5em;
     text-align: center;
     border-radius: 10px;
-    padding: .5em ;
-    transition: .3s;
- }
+}
 .oct1 {
     color: #BAA5FF;
 }
-.oct1:hover {
+.oct1:hover, .oct1.activa{
     background-color: #BAA5FF;
     color:white;
 }
 .oct2 {
     color: #09814A;
 }
-.oct2:hover {
+.oct2:hover, .oct2.activa {
     background-color: #09814A;
     color:white;
 }
 .oct3 {
     color: #0081AF;
 }
-.oct3:hover {
+.oct3:hover, .oct3.activa {
     background-color: #0081AF;
     color:white;
 }
@@ -158,14 +172,14 @@ article {
     /* color: white; */
     color: black;
 }
-.oct4:hover {
+.oct4:hover, .oct4.activa {
     background-color: black;
     color:white;
 }
 .oct5 {
     color: #F77F00;
 }
-.oct5:hover {
+.oct5:hover, .oct5.activa {
     background-color: #F77F00;
     color:white;
 }
@@ -195,13 +209,25 @@ input[type="button"].btn-bajar {
 
 @media (max-width: 768px) {
 
-  nav {
-    display: inline-block;
-    padding: 1em;
-  }
+    nav {
+        display: inline-block;
+        padding: 1em;
+    }
+    .header-octavas {
+        flex-wrap:wrap;
+        /* resolver para que se bajen equitativamente
+        si se pasa del ancho, en vez de que baje de a 1.*/
+    }
+    .header-octavas p {
+        margin-bottom: 0;
+    }
+}
 
+@media (max-width: 480px) {
   .header-octavas {
-    padding-top: 1em;
+    flex-wrap:wrap;
   }
-   
+  .header-octavas p {
+    margin: 0;
+  }
 }

@@ -134,6 +134,16 @@ section {
     border-bottom-left-radius: 0;
 }
 
+.nota-acorde {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.nota-acorde p:not(:first-child) {
+    margin-top: 0;
+}
+
 article {
     display: flex;
     flex-wrap: wrap;

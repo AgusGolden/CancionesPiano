@@ -1,10 +1,26 @@
 <!DOCTYPE html>
+<!--
+  PLANTILLA PARA UNA CANCIÓN NUEVA
+  1. Copiá este archivo y renombralo (ej. Mi_Cancion.html).
+  2. Cambiá NOMBRE_CANCION y ARTISTA (en <title> y en <h1>).
+  3. Agregá el link en ../index.html.
+
+  Cómo se escriben las notas:
+  - Una nota:            <p class="oct4">FA#</p>     (oct1 a oct5 = octava, define el color y el sonido)
+  - Nota repetida:       <p class="oct3">SI (x3)</p>  (se muestra como "SI ×3" y en modo práctica son 3 pasos)
+  - Acorde (a la vez):   <div class="nota-acorde"> <p class="oct3">SI</p> <p class="oct4">RE</p> </div>
+  - Cada <article> es una frase (una fila).
+  - Sección que se repite:  <section class="repetir">     + <p class="repeticion">x2</p>     + <div class="contenedor-repeticion">
+  - Sección que no se repite: <section class="sin-repetir"> + <p class="repeticion">x1</p> + <div class="contenedor-sin-repeticion">
+
+  El sonido, la barra de práctica y los atajos de teclado los agrega canciones.js solo.
+-->
 <html lang="es">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NOMBRE_CANCION</title>
+  <title>NOMBRE_CANCION - ARTISTA</title>
   <link rel="stylesheet" href="canciones.css"/>
 </head>
 
@@ -28,28 +44,26 @@
 
   <main>
 
-    <input type="button" class="btn-subir" value="↑" onclick="window.scrollBy({ top: -100, behavior: 'smooth' })" />
-
     <div class="content-notas">
 
       <section class="repetir">
-        <p class="repeticion">xCANTIDAD</p>
+        <p class="repeticion">x2</p>
         <div class="contenedor-repeticion">
 
           <article>
-            <p class="octX">NOTA</p>
-            <p class="octX">NOTA</p>
-            <p class="octX">NOTA</p>
-            <p class="octX">NOTA</p>
-            <p class="octX">NOTA</p>
+            <p class="oct3">DO</p>
+            <p class="oct3">RE (x2)</p>
+            <p class="oct3">MI</p>
+            <div class="nota-acorde">
+              <p class="oct3">SOL</p>
+              <p class="oct4">DO</p>
+            </div>
           </article>
 
           <article>
-            <p class="octX">NOTA</p>
-            <p class="octX">NOTA</p>
-            <p class="octX">NOTA</p>
-            <p class="octX">NOTA</p>
-            <p class="octX">NOTA</p>
+            <p class="oct4">NOTA</p>
+            <p class="oct4">NOTA</p>
+            <p class="oct4">NOTA</p>
           </article>
 
         </div>
@@ -59,23 +73,18 @@
         <p class="repeticion">x1</p>
         <div class="contenedor-sin-repeticion">
           <article>
-            <p class="octX">NOTA</p>
-            <p class="octX">NOTA</p>
-            <p class="octX">NOTA</p>
-            <p class="octX">NOTA</p>
-            <p class="octX">NOTA</p>
+            <p class="oct4">NOTA</p>
+            <p class="oct4">NOTA</p>
+            <p class="oct4">NOTA</p>
           </article>
         </div>
       </section>
 
-      
-
     </div>
 
-    <input type="button" class="btn-bajar" value="↓" onclick="window.scrollBy({top: 100, behavior: 'smooth'})" />
-
   </main>
-  
+
+  <script src="sonido.js" defer></script>
   <script src="canciones.js" defer></script>
 
 </body>

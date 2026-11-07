@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acordes - Piano</title>
+  <link rel="stylesheet" href="../canciones/canciones.css"/>
+  <link rel="stylesheet" href="acordes.css"/>
+</head>
+
+<body class="pagina-acordes">
+
+  <header>
+    <nav>
+      <a href="../index.html">← Volver al menú</a>
+      <div class="header-octavas">
+        <p class="oct1">1ra Octava</p>
+        <p class="oct2">2da Octava</p>
+        <p class="oct3">3ra Octava</p>
+        <p class="oct4">4ta Octava</p>
+        <p class="oct5">5ta Octava</p>
+      </div>
+    </nav>
+
+    <h1>Acordes</h1>
+    <p class="ayuda">Elegí un acorde para ver qué teclas tocar y escucharlo. También podés tocar el teclado.</p>
+  </header>
+
+  <main class="diseno">
+
+    <section class="explorador" aria-labelledby="titulo-buscador">
+      <h2 id="titulo-buscador">Buscador</h2>
+
+      <div class="controles">
+        <label>Nota
+          <select id="raiz"></select>
+        </label>
+        <label>Tipo
+          <select id="tipo"></select>
+        </label>
+        <label>Inversión
+          <select id="inversion">
+            <option value="0">Fundamental</option>
+            <option value="1">1ra inversión</option>
+            <option value="2">2da inversión</option>
+            <option value="3">3ra inversión</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="resultado">
+        <p class="nombre-acorde">
+          <span id="nombre"></span>
+          <span id="cifrado" class="cifrado"></span>
+        </p>
+        <div id="notas" class="notas-lista" aria-label="Notas del acorde"></div>
+        <div id="teclado" class="teclado" aria-label="Teclado"></div>
+        <div class="botones">
+          <button type="button" id="btn-tocar" class="principal">▶ Tocar</button>
+          <button type="button" id="btn-arpegio">Arpegio</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="listas">
+
+      <!--
+        MIS ACORDES
+        Para agregar uno, copiá una tarjeta y cambiá las notas (mismo formato que las canciones):
+          <div class="tarjeta-acorde">
+            <h3>NOMBRE</h3>
+            <div class="nota-acorde">
+              <p class="oct3">NOTA</p>   (de la más grave a la más aguda)
+              <p class="oct4">NOTA</p>
+            </div>
+            <span class="origen">De qué canción es</span>
+          </div>
+      -->
+      <section aria-labelledby="titulo-mis-acordes">
+        <h2 id="titulo-mis-acordes">Mis acordes</h2>
+        <div class="grilla-acordes">
+
+          <div class="tarjeta-acorde">
+            <h3>SI + RE</h3>
+            <div class="nota-acorde">
+              <p class="oct3">SI</p>
+              <p class="oct4">RE</p>
+            </div>
+            <span class="origen">The Office · parte de SOL mayor</span>
+          </div>
+
+          <div class="tarjeta-acorde">
+            <h3>SI + MI</h3>
+            <div class="nota-acorde">
+              <p class="oct3">SI</p>
+              <p class="oct4">MI</p>
+            </div>
+            <span class="origen">The Office · parte de MI menor</span>
+          </div>
+
+          <div class="tarjeta-acorde">
+            <h3>DO + MI</h3>
+            <div class="nota-acorde">
+              <p class="oct4">DO</p>
+              <p class="oct4">MI</p>
+            </div>
+            <span class="origen">The Office · parte de DO mayor</span>
+          </div>
+
+        </div>
+      </section>
+
+      <section aria-labelledby="titulo-mayores">
+        <h2 id="titulo-mayores">Mayores</h2>
+        <div class="grilla-acordes" data-tipo="mayor"></div>
+      </section>
+
+      <section aria-labelledby="titulo-menores">
+        <h2 id="titulo-menores">Menores</h2>
+        <div class="grilla-acordes" data-tipo="menor"></div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script src="../canciones/sonido.js" defer></script>
+  <script src="acordes.js" defer></script>
+
+</body>
+</html>

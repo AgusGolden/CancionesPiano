@@ -1,0 +1,291 @@
+/* Página de acordes (usa también ../canciones/canciones.css) */
+
+body.pagina-acordes {
+    padding-bottom: 2rem;
+}
+
+.diseno {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5em;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.diseno h2 {
+    font-size: 1.3em;
+    margin: 0 0 .7em;
+    padding-bottom: .3em;
+    border-bottom: 2px solid #ccc;
+}
+
+.listas section {
+    margin-bottom: 2em;
+}
+
+/* ---------- Buscador ---------- */
+
+.explorador {
+    align-self: start;
+    padding: 1.1em;
+    border-radius: 14px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .07);
+}
+
+.controles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: .6em;
+}
+
+.controles label {
+    display: flex;
+    flex-direction: column;
+    gap: .3em;
+    font-size: .8em;
+    font-weight: bold;
+    color: #666;
+}
+
+.controles select {
+    width: 100%;
+    padding: .5em;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    color: var(--texto);
+    font: inherit;
+    font-size: 1.15em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.controles select:focus-visible {
+    outline: 3px solid var(--oct3);
+    outline-offset: 1px;
+}
+
+.nombre-acorde {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5em;
+    margin: 1em 0 .6em;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.cifrado {
+    display: inline-block;
+    padding: .1em .5em;
+    border-radius: 6px;
+    background-color: var(--oscuro);
+    color: white;
+    font-size: .8em;
+}
+
+.cifrado[hidden] {
+    display: none;
+}
+
+.notas-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4em;
+}
+
+.notas-lista p {
+    margin: 0;
+    padding: .3em .7em;
+    border: 2px solid var(--c);
+    border-radius: 10px;
+    color: var(--c);
+    font-weight: bold;
+}
+
+/* ---------- Teclado ---------- */
+
+.teclado {
+    position: relative;
+    display: flex;
+    height: 150px;
+    margin: 1em 0;
+    user-select: none;
+}
+
+.tecla {
+    padding: 0;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+}
+
+.tecla.blanca {
+    position: relative;
+    flex: 1;
+    border: 1px solid #aaa;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    background-color: white;
+}
+
+.tecla.negra {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    height: 60%;
+    transform: translateX(-50%);
+    border-radius: 0 0 4px 4px;
+    background-color: #222;
+}
+
+.tecla .referencia {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+    font-size: .6em;
+    color: #999;
+    text-align: center;
+}
+
+/* Tecla del acorde: punto del color de la octava */
+.tecla.marcada::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    width: 14px;
+    height: 14px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background-color: var(--c);
+}
+
+.tecla.blanca.marcada {
+    background-color: color-mix(in srgb, var(--c) 18%, white);
+}
+
+.tecla.negra.marcada::after {
+    bottom: 8px;
+    border: 2px solid white;
+}
+
+.tecla.sonando {
+    animation: sonando .35s ease-out;
+}
+
+@keyframes sonando {
+    0%   { filter: brightness(.75); }
+    100% { filter: none; }
+}
+
+.tecla:focus-visible {
+    outline: 3px solid var(--oct3);
+    outline-offset: -3px;
+}
+
+.botones {
+    display: flex;
+    gap: .5em;
+}
+
+.botones button {
+    padding: .7em 1.3em;
+    border: none;
+    border-radius: 999px;
+    background-color: var(--oscuro);
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botones button:hover {
+    background-color: #555;
+}
+
+.botones button.principal {
+    background-color: var(--rojo);
+}
+
+.botones button.principal:hover {
+    background-color: #a52226;
+}
+
+/* ---------- Tarjetas ---------- */
+
+.grilla-acordes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+    gap: .7em;
+}
+
+.tarjeta-acorde {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .4em;
+    padding: .8em .5em;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .06);
+    transition: border-color .15s, transform .15s;
+}
+
+.tarjeta-acorde:hover {
+    border-color: #ccc;
+    transform: translateY(-2px);
+}
+
+.tarjeta-acorde:focus-visible {
+    outline: 3px solid var(--oct3);
+    outline-offset: 2px;
+}
+
+.tarjeta-acorde.seleccionada {
+    border-color: var(--rojo);
+}
+
+.tarjeta-acorde h3 {
+    margin: 0;
+    font-size: .95em;
+}
+
+.tarjeta-acorde .nota-acorde {
+    margin: 0;
+}
+
+.tarjeta-acorde .nota-acorde p {
+    margin: .1em .6em;
+    color: var(--c);
+    font-weight: bold;
+}
+
+.tarjeta-acorde .cifrado {
+    font-size: .75em;
+}
+
+.origen {
+    color: #777;
+    font-size: .75em;
+}
+
+/* ---------- Pantallas anchas: buscador fijo a la izquierda ---------- */
+
+@media (min-width: 900px) {
+    .diseno {
+        grid-template-columns: minmax(360px, 420px) minmax(0, 1fr);
+        align-items: start;
+    }
+
+    .explorador {
+        position: sticky;
+        top: 5rem;
+    }
+}

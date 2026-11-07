@@ -1,26 +1,39 @@
-/* Estilo base */
-html {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 16px;
-    box-sizing: border-box;
-    width: 100%;
-    margin: 0 auto;
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+
+:root {
+    --rojo: #C1292E;
+    --azul: #0081AF;
+    --oscuro: #333;
+    --fondo: #f0f0f0;
+    --texto: #333;
 }
 
 *, *::before, *::after {
-    box-sizing: inherit;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Roboto Mono", monospace;
+    font-size: 16px;
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
-    background-color: #f0f0f0;
-    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--fondo);
+    color: var(--texto);
 }
+
+/* ---------- Encabezado ---------- */
 
 header {
     text-align: center;
-    padding: 2em 1em;
-    background-color: #fff;
+    padding: 2.5em 1em 2em;
+    background-color: white;
+    border-bottom: 4px solid var(--rojo);
 }
 
 header h1 {
@@ -28,101 +41,149 @@ header h1 {
     margin: 0;
 }
 
-/* Navegación */
+header h1 span {
+    color: var(--rojo);
+}
+
+.subtitulo {
+    margin: .6em 0 0;
+    color: #666;
+}
+
+/* ---------- Navegación ---------- */
+
 nav {
-    background-color: #333;
-    padding: 0.5em 1em;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--oscuro);
 }
 
 nav ul {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    gap: .5em;
     list-style: none;
-    padding: 0;
     margin: 0;
-}
-
-nav li {
-    margin: 0.5em 1em;
-    font-size: 1.5em;
+    padding: .5em 1em;
 }
 
 nav a {
-    text-decoration: none;
+    display: inline-block;
+    padding: .5em 1em;
+    border-radius: 6px;
     color: white;
     font-weight: bold;
-    padding: 0.5em 1em;
-    display: inline-block;
-    transition: all 0.3s ease;
-    font-size: 1.5em;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color .2s;
 }
 
-nav a:hover {
+nav a:hover,
+nav a:focus-visible {
     background-color: #555;
-    border-radius: 5px;
 }
 
-/* Separadores */
-hr {
-    border: none;
-    border-top: 2px solid #ccc;
-    margin: 1em 0;
-}
+/* ---------- Contenido ---------- */
 
-/* Contenido principal */
 main {
+    flex-grow: 1;
+    width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    padding: 1em;
+    padding: 1.5em 1em;
 }
 
 main section {
-    margin-bottom: 2em;
+    margin-bottom: 2.5em;
+    scroll-margin-top: 4.5em;
 }
 
-main p {
-    font-weight: bold;
-    font-size: 1.8em;
-    margin-bottom: 0.5em;
+main h2 {
+    font-size: 1.5em;
+    margin: 0 0 .8em;
+    padding-bottom: .3em;
+    border-bottom: 2px solid #ccc;
 }
 
-/* Listas de enlaces */
-main ul {
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1em;
     list-style: none;
-    padding-left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.tarjetas a {
+    display: flex;
+    flex-direction: column;
+    gap: .4em;
+    height: 100%;
+    padding: 1.1em 1.2em;
+    border-left: 5px solid var(--azul);
+    border-radius: 10px;
+    background-color: white;
+    color: var(--texto);
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .06);
+    transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+
+.tarjetas a:hover,
+.tarjetas a:focus-visible {
+    transform: translateY(-2px);
+    border-left-color: var(--rojo);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, .1);
+}
+
+.tarjetas strong {
+    color: var(--azul);
+    font-size: 1.1em;
+}
+
+.tarjetas span {
+    color: #666;
+    font-size: .9em;
+}
+
+.vacio {
+    margin: 0;
+    color: #777;
+    font-style: italic;
+}
+
+/* ---------- Pie ---------- */
+
+footer {
+    text-align: center;
+    padding: 1em;
+    color: #888;
+    font-size: .8em;
+}
+
+footer p {
     margin: 0;
 }
 
-main li {
-    margin-bottom: 0.5em;
-    font-size: 1.5em;
-}
+/* ---------- Responsive ---------- */
 
-main a {
-    color: #0081AF;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-main a:hover {
-    color: #005a7a;
-    text-decoration: underline;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+@media (max-width: 520px) {
+    header h1 {
+        font-size: 1.5em;
     }
 
-    nav li {
-        margin: 0.3em 0;
+    header h1 span {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
 
-    main {
-        padding: 1em 0.5em;
+    * {
+        transition: none !important;
     }
 }
